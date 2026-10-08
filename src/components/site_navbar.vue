@@ -1,6 +1,10 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import { Moon, Languages, FileDown } from '@lucide/vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { Moon, Languages, ArrowDown } from '@lucide/vue'
+
+const route = useRoute()
+
+const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 </script>
 
 <template>
@@ -12,9 +16,11 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
       </RouterLink>
 
       <div class="navbar_links">
-        <RouterLink to="/about">À propos</RouterLink>
-        <RouterLink to="/projects">Projets</RouterLink>
-        <RouterLink to="/skills">Compétences</RouterLink>
+        <RouterLink to="/">Accueil</RouterLink>
+        <RouterLink to="/projects" :class="{ navbar_link_active: route.name === 'project' }"
+          >Projets</RouterLink
+        >
+        <RouterLink to="/skills">Stack</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
       </div>
 
@@ -27,10 +33,16 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
           <Languages :size="18" aria-hidden="true" />
         </button>
 
-        <button class="navbar_cv" type="button" aria-label="Curriculum vitae" title="CV">
+        <a
+          class="navbar_cv"
+          :href="cvUrl"
+          download="CV_Oleksii_Chahinian.pdf"
+          aria-label="Télécharger mon CV"
+          title="Télécharger mon CV"
+        >
           <span>CV</span>
-          <FileDown :size="16" aria-hidden="true" />
-        </button>
+          <ArrowDown :size="16" aria-hidden="true" />
+        </a>
       </div>
     </nav>
   </header>
@@ -60,7 +72,7 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
   justify-content: space-between;
   gap: 2rem;
   padding-block: 0.8125rem;
-  font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-mono);
 
   &_logo {
     display: inline-flex;
@@ -125,7 +137,8 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
         color: var(--color-text);
       }
 
-      &.router-link-exact-active {
+      &.router-link-exact-active,
+      &.navbar_link_active {
         color: var(--color-accent);
 
         &::after {
@@ -141,7 +154,8 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
     gap: 0.5rem;
     flex-shrink: 0;
 
-    button {
+    button,
+    .navbar_cv {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -155,6 +169,7 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
       color: var(--color-text);
       font-family: inherit;
       line-height: 1;
+      text-decoration: none;
       cursor: pointer;
       transition:
         color 150ms ease,
@@ -220,7 +235,8 @@ import { Moon, Languages, FileDown } from '@lucide/vue'
 
 @media (prefers-reduced-motion: reduce) {
   .navbar_links a,
-  .navbar_actions button {
+  .navbar_actions button,
+  .navbar_actions .navbar_cv {
     transition: none;
   }
 }

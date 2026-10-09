@@ -1,34 +1,39 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import ProjectCard from '@/components/project_card.vue'
-import { projects } from '@/data/projects.js'
+import { useProjects } from '@/composables/use_projects.js'
 import { ref, computed } from 'vue'
+
+const { t } = useI18n({ useScope: 'global' })
+
+const { projects } = useProjects()
 
 const selectedCategory = ref('all')
 
 const categoryFilters = [
-  { id: 'all', label: 'Tous' },
-  { id: 'web', label: 'Web' },
-  { id: 'mobile', label: 'Mobile' },
+  { id: 'all', label_key: 'projects.filters.all' },
+  { id: 'web', label_key: 'projects.filters.web' },
+  { id: 'mobile', label_key: 'projects.filters.mobile' },
 ]
 
 const filteredProjects = computed(() => {
   if (selectedCategory.value === 'all') {
-    return projects
+    return projects.value
   }
 
-  return projects.filter((project) => project.category === selectedCategory.value)
+  return projects.value.filter((project) => project.category === selectedCategory.value)
 })
 </script>
 
 <template>
   <main class="container projects_page">
-    <p class="projects_count">// {{ projects.length }} PROJETS</p>
-    <h1 id="projects_title">Projets</h1>
+    <p class="projects_count">// {{ t('projects.count', projects.length) }}</p>
+    <h1 id="projects_title">{{ t('projects.title') }}</h1>
     <p class="projects_description">
-      Découvrez mes projets web et mobiles, leurs fonctionnalités et les technologies utilisées.
+      {{ t('projects.description') }}
     </p>
 
-    <div class="projects_filters" role="group" aria-label="Filtrer les projets">
+    <div class="projects_filters" role="group" :aria-label="t('projects.filter_label')">
       <button
         v-for="filter in categoryFilters"
         :key="filter.id"
@@ -38,7 +43,7 @@ const filteredProjects = computed(() => {
         :aria-pressed="selectedCategory === filter.id"
         @click="selectedCategory = filter.id"
       >
-        {{ filter.label }}
+        {{ t(filter.label_key) }}
       </button>
     </div>
 
@@ -69,7 +74,7 @@ const filteredProjects = computed(() => {
 
   .projects_count {
     margin: 0 0 1rem;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.08em;
@@ -78,7 +83,7 @@ const filteredProjects = computed(() => {
   .projects_description {
     max-width: 35rem;
     margin: 0.75rem 0 2.5rem;
-    color: color-mix(in srgb, var(--color-text) 75%, var(--color-background));
+    color: var(--color-muted);
     font-size: 1.0625rem;
     line-height: 1.6;
   }
@@ -94,7 +99,7 @@ const filteredProjects = computed(() => {
 .projects_filter {
   min-height: 2.75rem;
   padding: 0.5rem 0.8125rem;
-  border: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   background-color: transparent;
   color: var(--color-text);
@@ -105,13 +110,13 @@ const filteredProjects = computed(() => {
   cursor: pointer;
 
   &:hover {
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-ink);
   }
 
   &_active {
     border-color: var(--color-accent);
     background-color: var(--color-accent);
-    color: var(--color-background);
+    color: var(--color-on-accent);
   }
 }
 

@@ -1,18 +1,24 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight } from '@lucide/vue'
 import ProjectGallery from '@/components/project_gallery.vue'
-import { projects } from '@/data/projects.js'
+import { useProjects } from '@/composables/use_projects.js'
+
+const { t } = useI18n({ useScope: 'global' })
+
+const { projects } = useProjects()
 
 const route = useRoute()
-const projectIndex = computed(() => projects.findIndex((entry) => entry.id === route.params.id))
-const project = computed(() => projects[projectIndex.value])
-const previousProject = computed(() => projects[projectIndex.value - 1])
-const nextProject = computed(() =>
-  projectIndex.value >= 0 ? projects[projectIndex.value + 1] : undefined,
+const projectIndex = computed(() =>
+  projects.value.findIndex((entry) => entry.id === route.params.id),
 )
-const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
+const project = computed(() => projects.value[projectIndex.value])
+const previousProject = computed(() => projects.value[projectIndex.value - 1])
+const nextProject = computed(() =>
+  projectIndex.value >= 0 ? projects.value[projectIndex.value + 1] : undefined,
+)
 </script>
 
 <template>
@@ -21,13 +27,13 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
       <div class="container project_back_container">
         <RouterLink class="project_back" to="/projects">
           <ArrowLeft :size="14" aria-hidden="true" />
-          Tous les projets
+          {{ t('project.all_projects') }}
         </RouterLink>
       </div>
 
       <header class="container project_hero">
         <p class="project_kicker">
-          {{ project.number }} · {{ categoryLabels[project.category] }}
+          {{ project.number }} · {{ t(`project.categories.${project.category}`) }}
           <template v-if="project.year"> · {{ project.year }}</template>
         </p>
         <h1>{{ project.title }}</h1>
@@ -40,16 +46,16 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
             target="_blank"
             rel="noopener noreferrer"
           >
-            Voir le projet <ArrowUpRight :size="16" aria-hidden="true" />
+            {{ t('project.visit') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </a>
           <button
             v-else
             class="project_button project_button_primary"
             type="button"
-            title="Lien de démonstration à venir"
+            :title="t('project.demo_pending')"
             disabled
           >
-            Voir le projet <ArrowUpRight :size="16" aria-hidden="true" />
+            {{ t('project.visit') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </button>
           <a
             v-if="project.sourceUrl"
@@ -58,16 +64,16 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
             target="_blank"
             rel="noopener noreferrer"
           >
-            Code source <ArrowUpRight :size="16" aria-hidden="true" />
+            {{ t('project.source') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </a>
           <button
             v-else
             class="project_button"
             type="button"
-            title="Lien du code source à venir"
+            :title="t('project.source_pending')"
             disabled
           >
-            Code source <ArrowUpRight :size="16" aria-hidden="true" />
+            {{ t('project.source') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </button>
         </div>
       </header>
@@ -75,19 +81,19 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
       <div class="project_metadata_section">
         <dl class="container project_metadata">
           <div>
-            <dt>Rôle</dt>
-            <dd>{{ project.role || '—' }}</dd>
+            <dt>{{ t('project.role') }}</dt>
+            <dd>{{ project.role || '-' }}</dd>
           </div>
           <div>
-            <dt>Année</dt>
-            <dd>{{ project.year || '—' }}</dd>
+            <dt>{{ t('project.year') }}</dt>
+            <dd>{{ project.year || '-' }}</dd>
           </div>
           <div>
-            <dt>Type</dt>
-            <dd>{{ categoryLabels[project.category] }}</dd>
+            <dt>{{ t('project.type') }}</dt>
+            <dd>{{ t(`project.categories.${project.category}`) }}</dd>
           </div>
           <div>
-            <dt>Stack</dt>
+            <dt>{{ t('nav.stack') }}</dt>
             <dd>{{ project.technologies.join(' · ') }}</dd>
           </div>
         </dl>
@@ -95,7 +101,9 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
 
       <section class="project_section" aria-labelledby="project_overview_title">
         <div class="container project_section_content">
-          <h2 id="project_overview_title" class="project_section_title">01 / PRÉSENTATION</h2>
+          <h2 id="project_overview_title" class="project_section_title">
+            01 / {{ t('project.overview') }}
+          </h2>
           <p class="project_overview">{{ project.overview || project.description }}</p>
         </div>
       </section>
@@ -106,7 +114,9 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
         aria-labelledby="project_highlights_title"
       >
         <div class="container project_section_content">
-          <h2 id="project_highlights_title" class="project_section_title">02 / RÉALISATIONS</h2>
+          <h2 id="project_highlights_title" class="project_section_title">
+            02 / {{ t('project.highlights') }}
+          </h2>
           <ul class="project_highlights">
             <li v-for="highlight in project.highlights" :key="highlight">
               <ChevronRight :size="18" aria-hidden="true" />
@@ -118,7 +128,9 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
 
       <section class="project_section" aria-labelledby="project_stack_title">
         <div class="container project_section_content">
-          <h2 id="project_stack_title" class="project_section_title">03 / STACK</h2>
+          <h2 id="project_stack_title" class="project_section_title">
+            03 / {{ t('project.stack') }}
+          </h2>
           <ul class="project_technologies">
             <li v-for="technology in project.technologies" :key="technology">{{ technology }}</li>
           </ul>
@@ -128,7 +140,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
       <section class="project_section" aria-labelledby="project_screenshots_title">
         <div class="container project_section_content">
           <h2 id="project_screenshots_title" class="project_section_title">
-            04 / CAPTURES D’ÉCRAN
+            04 / {{ t('project.screenshots') }}
           </h2>
           <ProjectGallery
             :key="project.id"
@@ -138,7 +150,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
         </div>
       </section>
 
-      <nav class="project_navigation" aria-label="Autres projets">
+      <nav class="project_navigation" :aria-label="t('project.other_projects')">
         <div class="container project_navigation_content">
           <RouterLink
             v-if="previousProject"
@@ -146,7 +158,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
             :to="{ name: 'project', params: { id: previousProject.id } }"
           >
             <span class="project_navigation_label"
-              ><ArrowLeft :size="14" aria-hidden="true" /> Projet précédent</span
+              ><ArrowLeft :size="14" aria-hidden="true" /> {{ t('project.previous') }}</span
             >
             <span class="project_navigation_title">{{ previousProject.title }}</span>
           </RouterLink>
@@ -156,7 +168,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
             :to="{ name: 'project', params: { id: nextProject.id } }"
           >
             <span class="project_navigation_label"
-              >Projet suivant <ArrowRight :size="14" aria-hidden="true"
+              >{{ t('project.next') }} <ArrowRight :size="14" aria-hidden="true"
             /></span>
             <span class="project_navigation_title">{{ nextProject.title }}</span>
           </RouterLink>
@@ -166,11 +178,11 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
 
     <section v-else class="container project_not_found">
       <RouterLink class="project_back" to="/projects"
-        ><ArrowLeft :size="14" aria-hidden="true" /> Tous les projets</RouterLink
+        ><ArrowLeft :size="14" aria-hidden="true" /> {{ t('project.all_projects') }}</RouterLink
       >
       <p class="project_kicker">// 404</p>
-      <h1>Projet introuvable</h1>
-      <p>Ce projet n’existe pas. Retrouvez mes réalisations dans la liste des projets.</p>
+      <h1>{{ t('project.not_found') }}</h1>
+      <p>{{ t('project.not_found_description') }}</p>
     </section>
   </main>
 </template>
@@ -211,7 +223,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
 }
 .project_kicker {
   margin: 0 0 1rem;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
@@ -244,7 +256,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
   font-weight: 500;
   text-decoration: none;
   &:hover:not(:disabled) {
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-ink);
   }
   &:disabled {
     cursor: not-allowed;
@@ -252,7 +264,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
   &_primary {
     border-color: var(--color-accent);
     background-color: var(--color-accent);
-    color: var(--color-background);
+    color: var(--color-on-accent);
   }
 }
 .project_metadata_section {
@@ -289,7 +301,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
   }
   &_title {
     margin: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 400;
@@ -321,7 +333,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
     flex-shrink: 0;
     align-self: flex-start;
     margin-top: 0.3125rem;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
 }
 .project_technologies {
@@ -354,7 +366,7 @@ const categoryLabels = { web: 'Application web', mobile: 'Application mobile' }
     color: var(--color-text);
     text-decoration: none;
     &:hover {
-      color: var(--color-accent);
+      color: var(--color-accent-ink);
     }
   }
   &_next {

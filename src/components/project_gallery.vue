@@ -1,6 +1,9 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 import { Images, Expand, X } from '@lucide/vue'
+
+const { t } = useI18n({ useScope: 'global' })
 
 defineProps({
   screenshots: { type: Array, default: () => [] },
@@ -40,7 +43,7 @@ function closeOnBackdrop(event) {
         <button
           class="project_gallery_preview"
           type="button"
-          :aria-label="`Agrandir : ${screenshot.alt}`"
+          :aria-label="t('gallery.enlarge', { description: screenshot.alt })"
           @click="openScreenshot(screenshot)"
         >
           <img
@@ -57,8 +60,8 @@ function closeOnBackdrop(event) {
 
     <div v-else class="project_gallery_empty">
       <Images :size="30" aria-hidden="true" />
-      <p class="project_gallery_empty_title">Captures à venir</p>
-      <p>Les écrans du projet seront présentés ici.</p>
+      <p class="project_gallery_empty_title">{{ t('gallery.empty_title') }}</p>
+      <p>{{ t('gallery.empty_description') }}</p>
     </div>
 
     <dialog
@@ -73,7 +76,7 @@ function closeOnBackdrop(event) {
           <p id="screenshot_preview_title">
             {{ selectedScreenshot?.caption || selectedScreenshot?.alt }}
           </p>
-          <button type="button" aria-label="Fermer l’aperçu" @click="closePreview">
+          <button type="button" :aria-label="t('gallery.close')" @click="closePreview">
             <X :size="20" aria-hidden="true" />
           </button>
         </div>
@@ -107,7 +110,7 @@ function closeOnBackdrop(event) {
     overflow: hidden;
     border: 1px solid var(--project_border);
     border-radius: 0.75rem;
-    background-color: color-mix(in srgb, var(--color-text) 3%, var(--color-background));
+    background-color: var(--color-surface);
     cursor: zoom-in;
     img {
       display: block;
@@ -116,7 +119,7 @@ function closeOnBackdrop(event) {
       object-fit: contain;
     }
     &:hover {
-      border-color: var(--color-accent);
+      border-color: var(--color-accent-ink);
     }
   }
   &_mobile {
@@ -136,7 +139,7 @@ function closeOnBackdrop(event) {
     border: 1px solid var(--project_border);
     border-radius: 0.5rem;
     background-color: var(--color-background);
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
   }
   figcaption {
     margin-top: 0.75rem;
@@ -155,10 +158,10 @@ function closeOnBackdrop(event) {
     padding: 2rem;
     border: 1px dashed var(--project_border);
     border-radius: 0.75rem;
-    background-color: color-mix(in srgb, var(--color-text) 2%, var(--color-background));
+    background-color: var(--color-surface);
     text-align: center;
     svg {
-      color: var(--color-accent);
+      color: var(--color-accent-ink);
     }
     p {
       margin: 0;
@@ -212,8 +215,8 @@ function closeOnBackdrop(event) {
         color: inherit;
         cursor: pointer;
         &:hover {
-          border-color: var(--color-accent);
-          color: var(--color-accent);
+          border-color: var(--color-accent-ink);
+          color: var(--color-accent-ink);
         }
       }
     }

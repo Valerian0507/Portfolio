@@ -1,5 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { ArrowUp } from '@lucide/vue'
+
+const { t } = useI18n({ useScope: 'global' })
 
 const currentYear = new Date().getFullYear()
 
@@ -11,10 +14,12 @@ function scrollToTop() {
 <template>
   <footer class="footer">
     <div class="container footer_content">
-      <p class="footer_copyright">© {{ currentYear }} Oleksii Chahinian. Tous droits réservés.</p>
+      <p class="footer_copyright">
+        © {{ currentYear }} Oleksii Chahinian. {{ t('footer.rights') }}
+      </p>
 
       <button class="footer_top" type="button" @click="scrollToTop">
-        Retour en haut
+        {{ t('footer.top') }}
         <ArrowUp :size="14" aria-hidden="true" />
       </button>
     </div>
@@ -24,8 +29,8 @@ function scrollToTop() {
 <style scoped lang="scss">
 .footer {
   padding-block: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
-  color: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
   font-family: var(--font-mono);
   font-size: 0.71875rem;
 

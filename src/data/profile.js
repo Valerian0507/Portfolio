@@ -1,33 +1,51 @@
 export const profileFacts = [
-  { id: 'name', label: 'Nom', value: 'Oleksii Chahinian' },
-  { id: 'role', label: 'Métier', value: 'Développeur full-stack' },
-  { id: 'location', label: 'Localisation', value: 'Lyon, France' },
-  { id: 'contract', label: 'Recherche', value: 'CDI' },
-  { id: 'focus', label: 'Spécialité', value: 'PHP · Symfony · Laravel' },
+  {
+    id: 'name',
+    label_key: 'profile.facts.name.label',
+    value_key: 'profile.facts.name.value',
+  },
+  {
+    id: 'role',
+    label_key: 'profile.facts.role.label',
+    value_key: 'profile.facts.role.value',
+  },
+  {
+    id: 'location',
+    label_key: 'profile.facts.location.label',
+    value_key: 'profile.facts.location.value',
+  },
+  {
+    id: 'contract',
+    label_key: 'profile.facts.contract.label',
+    value_key: 'profile.facts.contract.value',
+  },
+  {
+    id: 'focus',
+    label_key: 'profile.facts.focus.label',
+    value_key: 'profile.facts.focus.value',
+  },
 ]
 
 export const experience = [
   {
     id: 'freelance',
-    period: 'Août 2026 — Aujourd’hui',
-    role: 'Développeur freelance',
-    company: 'Indépendant',
-    description: '',
+    period_key: 'profile.experience.freelance.period',
+    role_key: 'profile.experience.freelance.role',
+    company_key: 'profile.experience.freelance.company',
+    description_key: null,
   },
   {
     id: 'xefi',
-    period: 'Mai — Juillet 2026',
-    role: 'Développeur web — stage',
-    company: 'XEFI',
-    description:
-      'Développement d’une plateforme e-commerce B2B avec Laravel, PHP et MySQL. Import de données depuis une API externe, API REST et gestion des rôles et des permissions.',
+    period_key: 'profile.experience.xefi.period',
+    role_key: 'profile.experience.xefi.role',
+    company_key: 'profile.experience.xefi.company',
+    description_key: 'profile.experience.xefi.description',
   },
   {
     id: 'foreign_legion',
-    period: '2017 — 2026',
-    role: 'Ressources humaines et logistique',
-    company: 'Légion étrangère',
-    description:
-      'Gestion administrative et logistique, suivi de plus de 300 dossiers et coordination des activités de formation.',
+    period_key: 'profile.experience.foreign_legion.period',
+    role_key: 'profile.experience.foreign_legion.role',
+    company_key: 'profile.experience.foreign_legion.company',
+    description_key: 'profile.experience.foreign_legion.description',
   },
 ]

@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "stack": "Stack",
+    "contact": "Contact",
+    "switch_language": "Switch to French",
+    "navigation": "Main navigation",
+    "logo": "Oleksii Chahinian - Home",
+    "light_theme": "Switch to light theme",
+    "dark_theme": "Switch to dark theme",
+    "download_cv": "Download my CV"
+  },
+  "home": {
+    "title": "Full-stack developer, specialising in PHP.",
+    "description": "I build web applications and APIs, with a particular focus on code quality.",
+    "availability": "Available for freelance & full-time",
+    "view_projects": "View my projects",
+    "selected_projects": "SELECTED PROJECTS",
+    "all_projects": "All projects ({count})",
+    "contact_title": "Let’s build something solid together.",
+    "contact_link": "Contact me"
+  },
+  "not_found": {
+    "title": "Page not found",
+    "description": "This page does not exist or has moved. Return to the home page to explore my portfolio.",
+    "back_home": "Back to home"
+  },
+  "projects": {
+    "title": "Projects",
+    "count": "NO PROJECTS | {count} PROJECT | {count} PROJECTS",
+    "description": "Explore my web and mobile projects, their features and the technologies used.",
+    "filter_label": "Filter projects",
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile"
+    }
+  },
+  "project": {
+    "categories": {
+      "web": "Web application",
+      "mobile": "Mobile application"
+    },
+    "technologies": "Technologies used",
+    "all_projects": "All projects",
+    "visit": "Visit project",
+    "source": "View source",
+    "demo_pending": "Demo link coming soon",
+    "source_pending": "Source code link coming soon",
+    "role": "Role",
+    "year": "Year",
+    "type": "Type",
+    "stack": "STACK",
+    "overview": "OVERVIEW",
+    "highlights": "WHAT I DID",
+    "screenshots": "SCREENSHOTS",
+    "other_projects": "Other projects",
+    "previous": "Previous project",
+    "next": "Next project",
+    "not_found": "Project not found",
+    "not_found_description": "This project does not exist. Explore my work in the project list."
+  },
+  "gallery": {
+    "enlarge": "Enlarge: {description}",
+    "close": "Close preview",
+    "empty_title": "Screenshots coming soon",
+    "empty_description": "Screenshots of the project will appear here."
+  },
+  "project_content": {
+    "ecommerce": {
+      "title": "E-commerce platform",
+      "description": "Online store with a shopping cart, inventory management and Stripe payments.",
+      "role": "Full-stack developer",
+      "overview": "An online store built with Symfony, Doctrine and MySQL. The project includes a shopping cart, inventory management and a checkout flow integrated with Stripe.",
+      "highlights": {
+        "0": "Built the shopping cart and checkout flow.",
+        "1": "Managed inventory and data with Doctrine and MySQL.",
+        "2": "Integrated Stripe payments."
+      }
+    },
+    "weight_tracker": {
+      "title": "Weight Tracker",
+      "description": "Mobile weight-tracking application with an API built in PHP.",
+      "role": "Full-stack developer",
+      "overview": "A mobile weight-tracking application built with React Native and connected to a PHP API. Data is stored in MySQL, with Docker providing the development environment.",
+      "highlights": {
+        "0": "Built the PHP API.",
+        "1": "Connected the React Native application to the API.",
+        "2": "Used MySQL for data storage and Docker for the development environment."
+      }
+    }
+  },
+  "profile": {
+    "kicker": "ABOUT",
+    "title": "A developer who pays attention to the details that matter.",
+    "lead": "A full-stack developer specialising in PHP, based in Lyon and looking for a permanent position.",
+    "description": "I build web applications and APIs with Symfony and Laravel, with a particular focus on code quality and maintainability.",
+    "information": "INFORMATION",
+    "experience_title": "EXPERIENCE",
+    "facts": {
+      "name": {
+        "label": "Name",
+        "value": "Oleksii Chahinian"
+      },
+      "role": {
+        "label": "Role",
+        "value": "Full-stack developer"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Lyon, France"
+      },
+      "contract": {
+        "label": "Seeking",
+        "value": "Permanent position"
+      },
+      "focus": {
+        "label": "Specialisation",
+        "value": "PHP · Symfony · Laravel"
+      }
+    },
+    "experience": {
+      "freelance": {
+        "period": "August 2026 - Present",
+        "role": "Freelance developer",
+        "company": "Self-employed"
+      },
+      "xefi": {
+        "period": "May - July 2026",
+        "role": "Web developer - internship",
+        "company": "XEFI",
+        "description": "Built a B2B e-commerce platform with Laravel, PHP and MySQL. Imported data from an external API, developed a REST API and managed roles and permissions."
+      },
+      "foreign_legion": {
+        "period": "2017 - 2026",
+        "role": "Human resources and logistics",
+        "company": "French Foreign Legion",
+        "description": "Administrative and logistics management, tracking over 300 records and coordinating training activities."
+      }
+    }
+  },
+  "skills": {
+    "title": "STACK",
+    "groups": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Databases",
+      "tools": "Tools and environment",
+      "mobile": "Mobile development"
+    }
+  },
+  "contact": {
+    "kicker": "CONTACT",
+    "title": "Let’s talk about your next project.",
+    "description": "Available for freelance projects and a permanent position. Have an opportunity, a project or a question? Let’s talk.",
+    "socials": "Find me online",
+    "form_title": "WRITE TO ME",
+    "website": "Website",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "name_placeholder": "Your name",
+    "email_placeholder": "you{'@'}example.com",
+    "message_placeholder": "Tell me about your project…",
+    "help": "Your name, email and message are sent through Formspree so I can reply to you.",
+    "sending": "Sending…",
+    "send": "Send message",
+    "success": "Thank you! Your message has been submitted.",
+    "error": "Your message could not be sent. Please try again later."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "top": "Back to top"
+  }
+}

@@ -1,27 +1,27 @@
 export const skillGroups = [
   {
     id: 'backend',
-    title: 'Backend',
     technologies: ['PHP', 'Symfony', 'Laravel', 'Doctrine'],
+    title_key: 'skills.groups.backend',
   },
   {
     id: 'frontend',
-    title: 'Frontend',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Vue', 'React'],
+    title_key: 'skills.groups.frontend',
   },
   {
     id: 'databases',
-    title: 'Bases de données',
     technologies: ['MySQL', 'PostgreSQL', 'MongoDB'],
+    title_key: 'skills.groups.databases',
   },
   {
     id: 'tools',
-    title: 'Outils et environnement',
     technologies: ['Git', 'GitHub', 'GitLab', 'Docker', 'Linux'],
+    title_key: 'skills.groups.tools',
   },
   {
     id: 'mobile',
-    title: 'Développement mobile',
     technologies: ['React Native', 'Expo'],
+    title_key: 'skills.groups.mobile',
   },
 ]

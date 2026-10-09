@@ -1,35 +1,55 @@
 <script setup>
 import { RouterLink, useRoute } from 'vue-router'
-import { Moon, Languages, ArrowDown } from '@lucide/vue'
+import { Moon, Sun, Languages, ArrowDown } from '@lucide/vue'
+import { useTheme } from '@/composables/use_theme.js'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n({ useScope: 'global' })
+
+function toggleLanguage() {
+  locale.value = locale.value === 'fr' ? 'en' : 'fr'
+}
 
 const route = useRoute()
+const { isDark, toggleTheme } = useTheme()
 
 const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 </script>
 
 <template>
   <header class="navbar_header">
-    <nav class="container navbar" aria-label="Navigation principale">
-      <RouterLink class="navbar_logo" to="/" aria-label="Oleksii Chahinian — Accueil">
+    <nav class="container navbar" :aria-label="t('nav.navigation')">
+      <RouterLink class="navbar_logo" to="/" :aria-label="t('nav.logo')">
         <span class="navbar_mark" aria-hidden="true"></span>
         <span>oleksii<span class="navbar_logo_suffix">.chahinian</span></span>
       </RouterLink>
 
       <div class="navbar_links">
-        <RouterLink to="/">Accueil</RouterLink>
-        <RouterLink to="/projects" :class="{ navbar_link_active: route.name === 'project' }"
-          >Projets</RouterLink
-        >
-        <RouterLink to="/skills">Stack</RouterLink>
-        <RouterLink to="/contact">Contact</RouterLink>
+        <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
+        <RouterLink to="/projects" :class="{ navbar_link_active: route.name === 'project' }">{{
+          t('nav.projects')
+        }}</RouterLink>
+        <RouterLink to="/skills">{{ t('nav.stack') }}</RouterLink>
+        <RouterLink to="/contact">{{ t('nav.contact') }}</RouterLink>
       </div>
 
       <div class="navbar_actions">
-        <button type="button" aria-label="Changer de thème" title="Changer de thème">
-          <Moon :size="18" aria-hidden="true" />
+        <button
+          type="button"
+          :aria-label="t(isDark ? 'nav.light_theme' : 'nav.dark_theme')"
+          :title="t(isDark ? 'nav.light_theme' : 'nav.dark_theme')"
+          @click="toggleTheme"
+        >
+          <Sun v-if="isDark" :size="18" aria-hidden="true" />
+          <Moon v-else :size="18" aria-hidden="true" />
         </button>
 
-        <button type="button" aria-label="Changer de langue" title="Changer de langue">
+        <button
+          type="button"
+          :aria-label="t('nav.switch_language')"
+          :title="t('nav.switch_language')"
+          @click="toggleLanguage"
+        >
           <Languages :size="18" aria-hidden="true" />
         </button>
 
@@ -37,8 +57,8 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
           class="navbar_cv"
           :href="cvUrl"
           download="CV_Oleksii_Chahinian.pdf"
-          aria-label="Télécharger mon CV"
-          title="Télécharger mon CV"
+          :aria-label="t('nav.download_cv')"
+          :title="t('nav.download_cv')"
         >
           <span>CV</span>
           <ArrowDown :size="16" aria-hidden="true" />
@@ -50,9 +70,9 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 
 <style scoped lang="scss">
 .navbar_header {
-  --navbar_border: color-mix(in srgb, var(--color-text) 14%, transparent);
-  --navbar_muted: color-mix(in srgb, var(--color-text) 64%, var(--color-background));
-  --navbar_hover: color-mix(in srgb, var(--color-text) 5%, var(--color-background));
+  --navbar_border: var(--color-border);
+  --navbar_muted: var(--color-muted);
+  --navbar_hover: var(--color-surface);
 
   position: sticky;
   top: 0;
@@ -61,7 +81,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
   background-color: var(--color-background);
 
   @supports (backdrop-filter: blur(12px)) {
-    background-color: color-mix(in srgb, var(--color-background) 88%, transparent);
+    background-color: color-mix(in srgb, var(--color-background) 82%, transparent);
     backdrop-filter: blur(12px);
   }
 }
@@ -88,7 +108,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
     white-space: nowrap;
 
     &:hover {
-      color: var(--color-accent);
+      color: var(--color-accent-ink);
     }
   }
 
@@ -139,7 +159,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 
       &.router-link-exact-active,
       &.navbar_link_active {
-        color: var(--color-accent);
+        color: var(--color-accent-ink);
 
         &::after {
           opacity: 1;
@@ -177,23 +197,23 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
         background-color 150ms ease;
 
       &:hover {
-        border-color: var(--color-accent);
+        border-color: var(--color-accent-ink);
         background-color: var(--navbar_hover);
-        color: var(--color-accent);
+        color: var(--color-accent-ink);
       }
     }
 
     .navbar_cv {
       padding-inline: 0.875rem;
-      border-color: var(--color-accent);
-      color: var(--color-accent);
+      border-color: var(--color-accent-ink);
+      color: var(--color-accent-ink);
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.05em;
 
       &:hover {
         background-color: var(--color-accent);
-        color: var(--color-background);
+        color: var(--color-on-accent);
       }
     }
   }

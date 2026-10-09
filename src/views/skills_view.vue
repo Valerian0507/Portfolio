@@ -1,32 +1,34 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import SkillsSection from '@/components/skills_section.vue'
 import { profileFacts, experience } from '@/data/profile.js'
+
+const { t } = useI18n({ useScope: 'global' })
 </script>
 
 <template>
   <main class="skills_page">
     <section class="container about_intro" aria-labelledby="about_intro_title">
       <div class="about_copy">
-        <p class="section_kicker">// À PROPOS</p>
-        <h1 id="about_intro_title">Un développeur attentif aux détails qui comptent.</h1>
+        <p class="section_kicker">// {{ t('profile.kicker') }}</p>
+        <h1 id="about_intro_title">{{ t('profile.title') }}</h1>
 
         <p class="about_lead">
-          Développeur full-stack spécialisé en PHP, basé à Lyon, je recherche un poste en CDI.
+          {{ t('profile.lead') }}
         </p>
 
         <p class="about_description">
-          Je développe des applications web et des API avec Symfony et Laravel, avec une attention
-          particulière à la qualité et à la maintenabilité du code.
+          {{ t('profile.description') }}
         </p>
       </div>
 
       <aside class="about_facts" aria-labelledby="about_facts_title">
-        <h2 id="about_facts_title" class="about_facts_title">// INFORMATIONS</h2>
+        <h2 id="about_facts_title" class="about_facts_title">// {{ t('profile.information') }}</h2>
 
         <dl class="about_facts_list">
           <div v-for="fact in profileFacts" :key="fact.id" class="about_fact">
-            <dt>{{ fact.label }}</dt>
-            <dd>{{ fact.value }}</dd>
+            <dt>{{ t(fact.label_key) }}</dt>
+            <dd>{{ t(fact.value_key) }}</dd>
           </div>
         </dl>
       </aside>
@@ -36,16 +38,20 @@ import { profileFacts, experience } from '@/data/profile.js'
 
     <section class="experience_section" aria-labelledby="experience_title">
       <div class="container">
-        <h2 id="experience_title" class="section_kicker experience_kicker">// EXPÉRIENCE</h2>
+        <h2 id="experience_title" class="section_kicker experience_kicker">
+          // {{ t('profile.experience_title') }}
+        </h2>
 
         <div class="experience_list">
           <article v-for="entry in experience" :key="entry.id" class="experience_item">
-            <p class="experience_period">{{ entry.period }}</p>
+            <p class="experience_period">{{ t(entry.period_key) }}</p>
             <div class="experience_details">
               <h3 class="experience_role">
-                {{ entry.role }} · <span>{{ entry.company }}</span>
+                {{ t(entry.role_key) }} · <span>{{ t(entry.company_key) }}</span>
               </h3>
-              <p v-if="entry.description" class="experience_description">{{ entry.description }}</p>
+              <p v-if="entry.description_key" class="experience_description">
+                {{ t(entry.description_key) }}
+              </p>
             </div>
           </article>
         </div>
@@ -56,9 +62,9 @@ import { profileFacts, experience } from '@/data/profile.js'
 
 <style scoped lang="scss">
 .skills_page {
-  --profile_muted: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
-  --profile_border: color-mix(in srgb, var(--color-text) 15%, transparent);
-  --profile_surface: color-mix(in srgb, var(--color-text) 3%, var(--color-background));
+  --profile_muted: var(--color-muted);
+  --profile_border: var(--color-border);
+  --profile_surface: var(--color-surface);
 }
 
 .about_intro {
@@ -83,7 +89,7 @@ import { profileFacts, experience } from '@/data/profile.js'
 
 .section_kicker {
   margin: 0 0 1rem;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 400;

@@ -1,12 +1,31 @@
 :root {
+  color-scheme: dark;
+
+  --color-surface: #141719;
   --color-background: #0b0d0e;
   --color-text: #e9ecec;
   --color-accent: #bef264;
   --color-muted: #7e878b;
   --color-border: #242a2d;
+  --color-accent-ink: var(--color-accent);
+  --color-on-accent: #12160b;
   --font-body: 'IBM Plex Sans Variable', system-ui, sans-serif;
   --font-heading: 'Space Grotesk Variable', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-background: #efeee6;
+  --color-surface: #fbfbf7;
+  --color-text: #171a15;
+  --color-muted: #5a6157;
+  --color-border: #dcdace;
+
+  --color-accent: #bef264;
+  --color-accent-ink: #576f2e;
+  --color-on-accent: #12160b;
 }
 
 *,
@@ -38,7 +57,7 @@ h3 {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   text-underline-offset: 0.2em;
 }
 
@@ -47,7 +66,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 3px;
 }
 

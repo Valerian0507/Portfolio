@@ -1,0 +1,176 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "stack": "Stack",
+    "contact": "Contact",
+    "switch_language": "Passer en anglais",
+    "navigation": "Navigation principale",
+    "logo": "Oleksii Chahinian - Accueil",
+    "light_theme": "Activer le thème clair",
+    "dark_theme": "Activer le thème sombre",
+    "download_cv": "Télécharger mon CV"
+  },
+  "home": {
+    "title": "Développeur full-stack, spécialisé en PHP.",
+    "description": "Je développe des applications web et des API, avec une attention particulière à la qualité du code.",
+    "availability": "Disponible pour freelance & temps plein",
+    "view_projects": "Voir mes projets",
+    "selected_projects": "PROJETS SÉLECTIONNÉS",
+    "all_projects": "Tous les projets ({count})",
+    "contact_title": "Construisons quelque chose de solide ensemble.",
+    "contact_link": "Me contacter"
+  },
+  "not_found": {
+    "title": "Page introuvable",
+    "description": "Cette page n’existe pas ou a été déplacée. Revenez à l’accueil pour découvrir mon portfolio.",
+    "back_home": "Retour à l’accueil"
+  },
+  "projects": {
+    "title": "Projets",
+    "count": "AUCUN PROJET | {count} PROJET | {count} PROJETS",
+    "description": "Découvrez mes projets web et mobiles, leurs fonctionnalités et les technologies utilisées.",
+    "filter_label": "Filtrer les projets",
+    "filters": {
+      "all": "Tous",
+      "web": "Web",
+      "mobile": "Mobile"
+    }
+  },
+  "project": {
+    "categories": {
+      "web": "Application web",
+      "mobile": "Application mobile"
+    },
+    "technologies": "Technologies utilisées",
+    "all_projects": "Tous les projets",
+    "visit": "Voir le projet",
+    "source": "Code source",
+    "demo_pending": "Lien de démonstration à venir",
+    "source_pending": "Lien du code source à venir",
+    "role": "Rôle",
+    "year": "Année",
+    "type": "Type",
+    "stack": "STACK",
+    "overview": "PRÉSENTATION",
+    "highlights": "RÉALISATIONS",
+    "screenshots": "CAPTURES D’ÉCRAN",
+    "other_projects": "Autres projets",
+    "previous": "Projet précédent",
+    "next": "Projet suivant",
+    "not_found": "Projet introuvable",
+    "not_found_description": "Ce projet n’existe pas. Retrouvez mes réalisations dans la liste des projets."
+  },
+  "gallery": {
+    "enlarge": "Agrandir : {description}",
+    "close": "Fermer l’aperçu",
+    "empty_title": "Captures à venir",
+    "empty_description": "Les écrans du projet seront présentés ici."
+  },
+  "project_content": {
+    "ecommerce": {
+      "title": "Plateforme e-commerce",
+      "description": "Boutique en ligne avec panier, gestion des stocks et paiement Stripe.",
+      "role": "Développeur full-stack",
+      "overview": "Une boutique en ligne développée avec Symfony, Doctrine et MySQL. Le projet réunit un panier, la gestion des stocks et un parcours de paiement intégré avec Stripe.",
+      "highlights": {
+        "0": "Développement du panier et du parcours de commande.",
+        "1": "Gestion des stocks et des données avec Doctrine et MySQL.",
+        "2": "Intégration du paiement avec Stripe."
+      }
+    },
+    "weight_tracker": {
+      "title": "Weight Tracker",
+      "description": "Application mobile de suivi du poids avec une API développée en PHP.",
+      "role": "Développeur full-stack",
+      "overview": "Une application mobile de suivi du poids développée avec React Native et associée à une API PHP. Les données sont stockées dans MySQL, avec un environnement de développement Docker.",
+      "highlights": {
+        "0": "Développement de l’API en PHP.",
+        "1": "Connexion de l’application React Native à l’API.",
+        "2": "Stockage des données avec MySQL et environnement Docker."
+      }
+    }
+  },
+  "profile": {
+    "kicker": "À PROPOS",
+    "title": "Un développeur attentif aux détails qui comptent.",
+    "lead": "Développeur full-stack spécialisé en PHP, basé à Lyon, je recherche un poste en CDI.",
+    "description": "Je développe des applications web et des API avec Symfony et Laravel, avec une attention particulière à la qualité et à la maintenabilité du code.",
+    "information": "INFORMATIONS",
+    "experience_title": "EXPÉRIENCE",
+    "facts": {
+      "name": {
+        "label": "Nom",
+        "value": "Oleksii Chahinian"
+      },
+      "role": {
+        "label": "Métier",
+        "value": "Développeur full-stack"
+      },
+      "location": {
+        "label": "Localisation",
+        "value": "Lyon, France"
+      },
+      "contract": {
+        "label": "Recherche",
+        "value": "CDI"
+      },
+      "focus": {
+        "label": "Spécialité",
+        "value": "PHP · Symfony · Laravel"
+      }
+    },
+    "experience": {
+      "freelance": {
+        "period": "Août 2026 - Aujourd’hui",
+        "role": "Développeur freelance",
+        "company": "Indépendant"
+      },
+      "xefi": {
+        "period": "Mai - Juillet 2026",
+        "role": "Développeur web - stage",
+        "company": "XEFI",
+        "description": "Développement d’une plateforme e-commerce B2B avec Laravel, PHP et MySQL. Import de données depuis une API externe, API REST et gestion des rôles et des permissions."
+      },
+      "foreign_legion": {
+        "period": "2017 - 2026",
+        "role": "Ressources humaines et logistique",
+        "company": "Légion étrangère",
+        "description": "Gestion administrative et logistique, suivi de plus de 300 dossiers et coordination des activités de formation."
+      }
+    }
+  },
+  "skills": {
+    "title": "STACK",
+    "groups": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Bases de données",
+      "tools": "Outils et environnement",
+      "mobile": "Développement mobile"
+    }
+  },
+  "contact": {
+    "kicker": "CONTACT",
+    "title": "Parlons de votre prochain projet.",
+    "description": "Disponible pour des missions freelance et un poste en CDI. Une opportunité, un projet ou une question ? Échangeons.",
+    "socials": "Retrouvez-moi en ligne",
+    "form_title": "ÉCRIVEZ-MOI",
+    "website": "Site web",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "name_placeholder": "Votre nom",
+    "email_placeholder": "vous{'@'}exemple.fr",
+    "message_placeholder": "Parlez-moi de votre projet…",
+    "help": "Votre nom, votre email et votre message sont transmis via Formspree pour me permettre de vous répondre.",
+    "sending": "Envoi en cours…",
+    "send": "Envoyer le message",
+    "success": "Merci ! Votre message a bien été transmis.",
+    "error": "Le message n’a pas pu être envoyé. Veuillez réessayer plus tard."
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "top": "Retour en haut"
+  }
+}

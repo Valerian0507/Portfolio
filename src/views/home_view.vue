@@ -1,8 +1,13 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import { ArrowRight, ArrowDown } from '@lucide/vue'
 import ProjectCard from '@/components/project_card.vue'
-import { projects } from '@/data/projects.js'
+import { useProjects } from '@/composables/use_projects.js'
+
+const { t } = useI18n({ useScope: 'global' })
+
+const { projects } = useProjects()
 
 const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 
@@ -10,7 +15,7 @@ const profileCode = `<?php
 
 $profile = [
     'name' => 'Oleksii Chahinian',
-    'role' => 'Développeur PHP',
+    'role' => 'PHP developer',
     'stack' => [
         'PHP',
         'Symfony',
@@ -26,26 +31,25 @@ $profile = [
       <div class="hero_intro">
         <p class="hero_stack">PHP / Symfony / Laravel</p>
 
-        <h1>Développeur full-stack, spécialisé en PHP.</h1>
+        <h1>{{ t('home.title') }}</h1>
 
         <p class="hero_description">
-          Je développe des applications web et des API, avec une attention particulière à la qualité
-          du code.
+          {{ t('home.description') }}
         </p>
 
         <p class="hero_availability">
           <span class="hero_availability_light" aria-hidden="true"></span>
-          <span>Disponible pour freelance &amp; temps plein</span>
+          <span>{{ t('home.availability') }}</span>
         </p>
 
         <div class="hero_actions">
           <RouterLink class="hero_button hero_button_primary" to="/projects">
-            Voir mes projets
+            {{ t('home.view_projects') }}
             <ArrowRight :size="16" aria-hidden="true" />
           </RouterLink>
 
           <a class="hero_button" :href="cvUrl" download="CV_Oleksii_Chahinian.pdf">
-            Télécharger mon CV
+            {{ t('nav.download_cv') }}
             <ArrowDown :size="16" aria-hidden="true" />
           </a>
         </div>
@@ -65,9 +69,9 @@ $profile = [
     <section class="projects" aria-labelledby="projects_title">
       <div class="container">
         <div class="projects_header">
-          <h2 id="projects_title" class="projects_title">// PROJETS SÉLECTIONNÉS</h2>
+          <h2 id="projects_title" class="projects_title">// {{ t('home.selected_projects') }}</h2>
           <RouterLink class="projects_link" to="/projects">
-            Tous les projets ({{ projects.length }})
+            {{ t('home.all_projects', { count: projects.length }) }}
             <ArrowRight :size="14" aria-hidden="true" />
           </RouterLink>
         </div>
@@ -86,9 +90,9 @@ $profile = [
 
     <section class="home_contact" aria-labelledby="home_contact_title">
       <div class="container home_contact_content">
-        <h2 id="home_contact_title">Construisons quelque chose de solide ensemble.</h2>
+        <h2 id="home_contact_title">{{ t('home.contact_title') }}</h2>
         <RouterLink class="home_contact_link" to="/contact">
-          Me contacter
+          {{ t('home.contact_link') }}
           <ArrowRight :size="16" aria-hidden="true" />
         </RouterLink>
       </div>
@@ -111,7 +115,7 @@ $profile = [
     justify-content: center;
     min-height: 2.75rem;
     padding: 0.75rem 1.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-text) 20%, transparent);
+    border: 1px solid var(--color-border);
     border-radius: 0.625rem;
     background-color: transparent;
     color: var(--color-text);
@@ -120,22 +124,22 @@ $profile = [
     text-decoration: none;
 
     &:hover {
-      border-color: var(--color-accent);
+      border-color: var(--color-accent-ink);
     }
 
     &_primary {
       border-color: var(--color-accent);
       background-color: var(--color-accent);
-      color: var(--color-background);
+      color: var(--color-on-accent);
     }
   }
 
   &_terminal {
     min-width: 0;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+    border: 1px solid var(--color-border);
     border-radius: 0.75rem;
-    background-color: color-mix(in srgb, var(--color-text) 3%, var(--color-background));
+    background-color: var(--color-surface);
     font-family: var(--font-mono);
   }
 
@@ -144,8 +148,8 @@ $profile = [
     align-items: center;
     justify-content: space-between;
     padding: 0.875rem 1.25rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
-    color: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-muted);
     font-size: 0.75rem;
   }
 
@@ -163,7 +167,7 @@ $profile = [
     margin: 0;
     padding: 1.5rem;
     overflow-x: auto;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-family: inherit;
     font-size: 0.8125rem;
     line-height: 1.8;
@@ -183,7 +187,7 @@ $profile = [
 
   &_stack {
     margin: 0 0 1.375rem;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     letter-spacing: 0.08em;
@@ -202,7 +206,7 @@ $profile = [
     align-items: center;
     gap: 0.5625rem;
     margin: 1.625rem 0 0;
-    color: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
+    color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.78125rem;
   }
@@ -251,7 +255,7 @@ $profile = [
 
 .projects {
   padding-block: 5rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  border-top: 1px solid var(--color-border);
 
   &_header {
     display: flex;
@@ -264,7 +268,7 @@ $profile = [
 
   &_title {
     margin: 0;
-    color: var(--color-accent);
+    color: var(--color-accent-ink);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 400;
@@ -276,7 +280,7 @@ $profile = [
     align-items: center;
     gap: 0.375rem;
     min-height: 2.75rem;
-    color: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
+    color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     text-decoration: none;
@@ -299,7 +303,7 @@ $profile = [
   }
 }
 .home_contact {
-  border-top: 1px solid color-mix(in srgb, var(--color-text) 15%, transparent);
+  border-top: 1px solid var(--color-border);
 
   &_content {
     display: flex;
@@ -327,7 +331,7 @@ $profile = [
     border: 1px solid var(--color-accent);
     border-radius: 0.625rem;
     background-color: var(--color-accent);
-    color: var(--color-background);
+    color: var(--color-on-accent);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     font-weight: 500;

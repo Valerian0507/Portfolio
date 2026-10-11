@@ -11,6 +11,12 @@
     "dark_theme": "Switch to dark theme",
     "download_cv": "Download my CV"
   },
+  "seo": {
+    "home": {
+      "title": "Oleksii Chahinian - Full-stack PHP Developer",
+      "description": "Oleksii Chahinian’s portfolio: full-stack PHP developer in Lyon. Web and mobile projects, skills and experience. Available for freelance and full-time roles."
+    }
+  },
   "home": {
     "title": "Full-stack developer, specialising in PHP.",
     "description": "I build web applications and APIs, with a particular focus on code quality.",

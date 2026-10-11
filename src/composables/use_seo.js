@@ -5,8 +5,8 @@ import { projects } from '@/data/projects.js'
 
 const pageKeys = {
   home: {
-    title_key: 'home.title',
-    description_key: 'home.description',
+    title_key: 'seo.home.title',
+    description_key: 'seo.home.description',
   },
   projects: {
     title_key: 'projects.title',
@@ -44,7 +44,7 @@ export function useSeo() {
       description = project ? t(project.description_key) : t('not_found.description')
     }
 
-    document.title = `${title} — Oleksii Chahinian`
+    document.title = route.name === 'home' ? title : `${title} - Oleksii Chahinian`
 
     const descriptionTag = document.querySelector('meta[name="description"]')
 

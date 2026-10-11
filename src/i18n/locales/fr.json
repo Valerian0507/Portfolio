@@ -11,6 +11,12 @@
     "dark_theme": "Activer le thème sombre",
     "download_cv": "Télécharger mon CV"
   },
+  "seo": {
+    "home": {
+      "title": "Oleksii Chahinian - Développeur full-stack PHP",
+      "description": "Portfolio d’Oleksii Chahinian, développeur full-stack PHP à Lyon. Projets web et mobiles, compétences et parcours. Disponible en freelance et pour un CDI."
+    }
+  },
   "home": {
     "title": "Développeur full-stack, spécialisé en PHP.",
     "description": "Je développe des applications web et des API, avec une attention particulière à la qualité du code.",

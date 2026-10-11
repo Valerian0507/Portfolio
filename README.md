@@ -1,4 +1,4 @@
-# Oleksii Chahinian — Portfolio
+# Oleksii Chahinian - Portfolio
 
 Personal portfolio of a full-stack developer specializing in PHP. The website presents web and mobile projects, technical skills, professional experience, and contact information.
 

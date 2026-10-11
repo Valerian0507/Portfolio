@@ -2,6 +2,8 @@
 
 Personal portfolio of a full-stack developer specializing in PHP. The website presents web and mobile projects, technical skills, professional experience, and contact information.
 
+Live website: [oleksii-chahinian-portfolio.netlify.app](https://oleksii-chahinian-portfolio.netlify.app/)
+
 The interface is available in French and English. Code, file names, and technical documentation are written in English.
 
 ## Features
@@ -75,10 +77,10 @@ The website can run without a form ID, but the contact form cannot send messages
 | Command           | Purpose                                              |
 | ----------------- | ---------------------------------------------------- |
 | `npm run dev`     | Start the development server.                        |
-| `npm run build`   | Build the production website into`dist/`.            |
+| `npm run build`   | Build the production website into `dist/`.            |
 | `npm run preview` | Preview the production build locally after building. |
 | `npm run lint`    | Run Oxlint and ESLint with automatic fixes.          |
-| `npm run format`  | Format files in`src/` with Prettier.                 |
+| `npm run format`  | Format files in `src/` with Prettier.                 |
 
 The lint and format commands can modify source files. Review their changes before committing.
 
@@ -136,11 +138,10 @@ The router uses HTML5 history mode. Configure the host to serve `index.html` for
 
 If hosting under a subdirectory, configure Vite's `base` option and check asset paths. `npm run preview` is for local verification, not a production server. See [Vite static deployment](https://vite.dev/guide/static-deploy.html).
 
-After obtaining the public site URL:
+Deployment verification checklist:
 
-1. Add `og:url` and an absolute HTTPS `og:image` URL in `index.html`. The current Open Graph metadata is prepared but does not yet include these URLs.
-2. Confirm that `og_image.png` and the CV are publicly accessible.
-3. Test direct visits and refreshes on application routes and check the 404 page.
-4. Verify language switching, themes, keyboard navigation, and mobile layouts.
-5. Send a contact form test and confirm delivery through Formspree.
-6. Check the shared-link preview on the services where the portfolio will be shared.
+1. Confirm that `og_image.png` and the CV are publicly accessible.
+2. Test direct visits and refreshes on application routes and check the 404 page.
+3. Verify language switching, themes, keyboard navigation, and mobile layouts.
+4. Send a contact form test and confirm delivery through Formspree.
+5. Check the shared-link preview on the services where the portfolio will be shared.

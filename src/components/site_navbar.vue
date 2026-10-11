@@ -121,7 +121,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
     height: 0.5625rem;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: var(--color-accent);
+    background-color: var(--color-status);
   }
 
   &_links {
@@ -237,10 +237,25 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 
 @media (max-width: 34rem) {
   .navbar {
+    column-gap: 0.5rem;
     padding-block: 0.625rem;
 
+    &_logo {
+      gap: 0.375rem;
+      font-size: 0.875rem;
+    }
+
     &_logo_suffix {
-      display: none;
+      display: inline;
+    }
+
+    &_actions {
+      gap: 0.25rem;
+
+      button svg {
+        width: 1rem;
+        height: 1rem;
+      }
     }
 
     &_links {
@@ -248,6 +263,33 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_oleksii_chahinian.pdf`
 
       a {
         letter-spacing: 0.03em;
+      }
+    }
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .navbar {
+    column-gap: 0.25rem;
+
+    &_logo {
+      gap: 0.25rem;
+    }
+
+    &_mark {
+      width: 0.4375rem;
+      height: 0.4375rem;
+    }
+
+    &_actions {
+      button,
+      .navbar_cv {
+        min-width: 2.25rem;
+        padding-inline: 0.375rem;
+      }
+
+      .navbar_cv span {
+        display: none;
       }
     }
   }

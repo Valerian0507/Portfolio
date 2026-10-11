@@ -216,8 +216,9 @@ $profile = [
     height: 0.5rem;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: var(--color-accent);
-    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-accent) 22%, transparent);
+    background-color: var(--color-status);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-status) 22%, transparent);
+    animation: availability_blink 2s ease-in-out infinite;
   }
 
   &_actions {
@@ -225,6 +226,17 @@ $profile = [
     flex-wrap: wrap;
     gap: 0.875rem;
     margin-top: 2.125rem;
+  }
+}
+
+@keyframes availability_blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
   }
 }
 
@@ -240,7 +252,8 @@ $profile = [
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero_terminal_cursor {
+  .hero_terminal_cursor,
+  .hero_availability_light {
     animation: none;
   }
 }

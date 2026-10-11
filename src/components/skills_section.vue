@@ -27,7 +27,7 @@ const { t } = useI18n({ useScope: 'global' })
 
 <style scoped lang="scss">
 .skills_section {
-  margin-top: 3.75rem;
+  margin-top: 2rem;
   padding-block: 4.5rem;
   border-top: 1px solid var(--color-border);
 }

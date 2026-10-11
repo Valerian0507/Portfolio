@@ -8,6 +8,7 @@
   --color-muted: #7e878b;
   --color-border: #242a2d;
   --color-accent-ink: var(--color-accent);
+  --color-status: var(--color-accent);
   --color-on-accent: #12160b;
   --font-body: 'IBM Plex Sans Variable', system-ui, sans-serif;
   --font-heading: 'Space Grotesk Variable', system-ui, sans-serif;
@@ -20,11 +21,12 @@
   --color-background: #efeee6;
   --color-surface: #fbfbf7;
   --color-text: #171a15;
-  --color-muted: #5a6157;
+  --color-muted: #444b41;
   --color-border: #dcdace;
 
   --color-accent: #bef264;
-  --color-accent-ink: #576f2e;
+  --color-accent-ink: #425921;
+  --color-status: #9ac550;
   --color-on-accent: #12160b;
 }
 
@@ -88,6 +90,6 @@ button {
   min-height: 100svh;
 }
 
-#app > main {
+#app>main {
   flex: 1;
 }

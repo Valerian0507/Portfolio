@@ -264,12 +264,32 @@ defineProps({
 
 @media (max-width: 40rem) {
   .project_card_row {
+    position: relative;
     grid-template-columns: 1.5rem minmax(0, 1fr) max-content;
     column-gap: 0.75rem;
-    padding-inline: 0;
+    padding-inline: 0.75rem;
+
+    &::before {
+      position: absolute;
+      inset-block: 0;
+      left: 0px;
+      width: 3px;
+      background-color: var(--color-accent);
+      opacity: 0;
+      pointer-events: none;
+      content: '';
+    }
+
+    &:hover {
+      box-shadow: none;
+
+      &::before {
+        opacity: 1;
+      }
+    }
 
     .project_card_content {
-      grid-column: 1 / -1;
+      grid-column: 2 / -1;
     }
 
     .project_card_meta {
@@ -287,7 +307,10 @@ defineProps({
     }
   }
 }
+@media (max-width: 22.5rem) {
+  .project_card_row .project_card_title {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+  }
+}
 </style>
-
-@media (max-width: 22.5rem) { .project_card_row .project_card_title { font-size: 1.125rem;
-line-height: 1.625rem; } }

@@ -15,7 +15,7 @@ export const projects = [
     ],
     year: 2025,
     demoUrl: null,
-    sourceUrl: 'https://github.com/Valerian0507/store',
+    sourceUrl: null,
     screenshots: [],
     title_key: 'project_content.ecommerce.title',
     description_key: 'project_content.ecommerce.description',

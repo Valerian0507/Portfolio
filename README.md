@@ -17,7 +17,9 @@ The interface is available in French and English. Code, file names, and technica
 - French and English translations, with a saved language preference.
 - Route-based page titles and descriptions, a custom 404 page, and a custom SVG favicon.
 
-Project screenshots, years, and external links are still being completed.
+Project descriptions, years, and technology stacks are filled in for both featured projects. Screenshots will be added later.
+
+The source repositories for the featured projects are kept private, and public demos are not currently provided. Source-code and demo links remain unset in the portfolio data. Their buttons and the screenshot gallery appear only when the corresponding content is available.
 
 ## Tech stack
 
@@ -118,9 +120,9 @@ vite.config.js          Vite configuration and the @ alias for src/
 | Browser icon                                                  | `public/favicon.svg`                                      |
 | Social preview image                                          | `public/og_image.png`                                     |
 
-Project text is resolved through translation keys. Update both locale files when adding or changing translated content.
+Project text is resolved through translation keys. Update both locale files when adding or changing translated content. Achievement entries use separate `label` and `description` fields to display a bold label followed by its description.
 
-To add project screenshots, place the images under `public/images/` and add entries to the project's `screenshots` array. Each entry uses `src`, `alt`, and an optional `caption`. Set `src` to a path relative to `public/`, such as `images/projects/ecommerce/overview.png`. Keep years and demo/source links as `null` when they are unavailable.
+To add project screenshots, place the images under `public/images/` and add entries to the project's `screenshots` array. Each entry uses `src`, `alt`, and an optional `caption`. Set `src` to a path relative to `public/`, such as `images/projects/ecommerce/overview.png`. Use a numeric year for each project. Keep `demoUrl` and `sourceUrl` as `null` when a demo is unavailable or the source repository is private. Keep `screenshots` as an empty array until images are ready.
 
 ## Deployment
 

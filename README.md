@@ -138,7 +138,9 @@ The production output is a static single-page application. Typical hosting setti
 
 Configure the form ID in the hosting provider's build environment before building. Changing it requires a new build. Local `.env.local` settings are not automatically transferred to the hosting provider.
 
-The router uses HTML5 history mode. Configure the host to serve `index.html` for application routes such as `/projects`, `/skills`, and `/contact`, while serving existing static files normally. This is needed for direct visits and page refreshes. See [Vue Router history mode](https://router.vuejs.org/guide/essentials/history-mode.html).
+The router uses HTML5 history mode. `netlify.toml` rewrites the existing application pages to `index.html` with HTTP 200 so direct visits and refreshes work. The former `/about` URL redirects to `/skills` with HTTP 301. Other paths are served through `index.html` with HTTP 404, allowing Vue to show the existing not-found page. Existing static files are served normally because the rewrite rules are not forced. See [Netlify redirect options](https://docs.netlify.com/manage/routing/redirects/redirect-options/).
+
+When adding a page or project, add its exact path to the HTTP 200 rewrite rules in `netlify.toml` before the final wildcard rule, and update `public/sitemap.xml`. Missing resources such as `/llms.txt` and `/.well-known/ai-catalog.json` return HTTP 404 instead of being reported as successful HTML responses.
 
 If hosting under a subdirectory, configure Vite's `base` option and check asset paths. `npm run preview` is for local verification, not a production server. See [Vite static deployment](https://vite.dev/guide/static-deploy.html).
 

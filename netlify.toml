@@ -5,7 +5,47 @@
 [build.environment]
   NODE_VERSION = "24"
 
+# Existing static files take precedence; do not force these rewrites.
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/projects"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/projects/ecommerce"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/projects/weight_tracker"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/skills"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
+# Preserve the former About URL as a permanent redirect.
+[[redirects]]
+  from = "/about"
+  to = "/skills"
+  status = 301
+
+# Missing files and unknown pages retain a real HTTP 404.
+# Vue displays the existing not-found page at the requested URL.
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404

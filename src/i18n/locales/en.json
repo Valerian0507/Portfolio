@@ -76,24 +76,82 @@
   "project_content": {
     "ecommerce": {
       "title": "E-commerce platform",
-      "description": "Online store with a shopping cart, inventory management and Stripe payments.",
+      "description": "Online store with customer accounts, Stripe payments and an administration back office.",
       "role": "Full-stack developer",
-      "overview": "An online store built with Symfony, Doctrine and MySQL. The project includes a shopping cart, inventory management and a checkout flow integrated with Stripe.",
+      "overview": "An e-commerce platform built with Symfony, Twig, Doctrine and MySQL. The catalogue supports search, category filters, sorting and pagination. Customers can manage their cart, place orders and pay through Stripe Checkout. A customer area provides address management and order history, while a dedicated back office handles products, categories, orders and users.",
       "highlights": {
-        "0": "Built the shopping cart and checkout flow.",
-        "1": "Managed inventory and data with Doctrine and MySQL.",
-        "2": "Integrated Stripe payments."
+        "0": {
+          "label": "Back office:",
+          "description": "custom administration interface built with Symfony and Twig to manage products, categories, images and stock replenishment."
+        },
+        "1": {
+          "label": "Orders and users:",
+          "description": "order status management and user role changes, with search, filters and pagination in the corresponding lists."
+        },
+        "2": {
+          "label": "Shopping cart:",
+          "description": "session storage for visitors and database storage for customers, merging both carts on login."
+        },
+        "3": {
+          "label": "Payments:",
+          "description": "Stripe Checkout integration and order creation with stock checks and snapshots of product information when the order is created."
+        },
+        "4": {
+          "label": "Customer area:",
+          "description": "email verification, password reset, address management and order history."
+        },
+        "5": {
+          "label": "Security:",
+          "description": "role-based access control, CSRF protection for update actions and form validation, including product image uploads."
+        },
+        "6": {
+          "label": "Architecture:",
+          "description": "business logic organised into dedicated cart, order and payment services, with data persistence through Doctrine."
+        },
+        "7": {
+          "label": "Tests:",
+          "description": "PHPUnit tests for order calculations and items, visitor access restrictions and the password reset flow."
+        }
       }
     },
     "weight_tracker": {
       "title": "Weight Tracker",
-      "description": "Mobile weight-tracking application with an API built in PHP.",
+      "description": "Mobile weight and waist measurement tracker with goals and a pregnancy mode.",
       "role": "Full-stack developer",
-      "overview": "A mobile weight-tracking application built with React Native and connected to a PHP API. Data is stored in MySQL, with Docker providing the development environment.",
+      "overview": "A mobile application built with React Native and Expo in JavaScript, connected to a REST API developed in PHP. Users can record and edit measurements, view their trends on charts and track goals over defined periods. A pregnancy mode adds week calculations and tracks deviations from thresholds configured by the user. Data is stored in MySQL, with Docker Compose providing the backend environment.",
       "highlights": {
-        "0": "Built the PHP API.",
-        "1": "Connected the React Native application to the API.",
-        "2": "Used MySQL for data storage and Docker for the development environment."
+        "0": {
+          "label": "REST API:",
+          "description": "custom PHP architecture with a router, dependency container and middleware pipeline, plus centralised JSON error handling."
+        },
+        "1": {
+          "label": "Mobile application:",
+          "description": "React Native screens connected to the API, React Navigation and an initial user flow based on profile information and existing tracking data."
+        },
+        "2": {
+          "label": "Measurements and history:",
+          "description": "creation, editing and deletion of weight and waist measurements, with history grouped by month, filters and pagination."
+        },
+        "3": {
+          "label": "Goals and charts:",
+          "description": "progress tracking, custom SVG charts and statistics, with tracking periods and saved results when each period is completed."
+        },
+        "4": {
+          "label": "Pregnancy mode:",
+          "description": "week calculations, configurable weight gain thresholds and display of deviations on a dashboard adapted to this mode."
+        },
+        "5": {
+          "label": "Authentication:",
+          "description": "JWT registration and login, password hashing, data scoped to each user and token storage in Expo SecureStore."
+        },
+        "6": {
+          "label": "Data and environment:",
+          "description": "MySQL access through PDO and prepared statements, with a Docker Compose environment combining the PHP API, database and Adminer."
+        },
+        "7": {
+          "label": "Tests:",
+          "description": "PHPUnit unit tests for the router, dependency container, validators, period summaries and pregnancy tracking calculations."
+        }
       }
     }
   },

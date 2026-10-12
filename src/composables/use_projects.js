@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { projects as projectData } from '@/data/projects.js'
 
 export function useProjects() {
-  const { t } = useI18n({ useScope: 'global' })
+  const { t, te } = useI18n({ useScope: 'global' })
 
   const projects = computed(() =>
     projectData.map((project) => ({
@@ -12,7 +12,15 @@ export function useProjects() {
       description: t(project.description_key),
       role: t(project.role_key),
       overview: t(project.overview_key),
-      highlights: project.highlight_keys.map((key) => t(key)),
+      highlights: project.highlight_keys.map((key) => {
+        const hasLabel = te(`${key}.label`)
+
+        return {
+          id: key,
+          label: hasLabel ? t(`${key}.label`) : '',
+          description: t(hasLabel ? `${key}.description` : key),
+        }
+      }),
     })),
   )
 

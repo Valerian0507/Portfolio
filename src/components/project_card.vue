@@ -2,30 +2,11 @@
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import { ArrowRight } from '@lucide/vue'
-import { computed } from 'vue'
-import { useTheme } from '@/composables/use_theme.js'
-import phpIcon from '@/assets/icons/technologies/php.svg'
-import symfonyLightIcon from '@/assets/icons/technologies/symfonylight.svg'
-import symfonyDarkIcon from '@/assets/icons/technologies/symfonydark.svg'
-import doctrineIcon from '@/assets/icons/technologies/doctrine.svg'
-import mysqlIcon from '@/assets/icons/technologies/mysql.svg'
-import stripeWhiteIcon from '@/assets/icons/technologies/stripe.svg'
-import stripePurpleIcon from '@/assets/icons/technologies/stripe_purple.svg'
-import reactNativeIcon from '@/assets/icons/technologies/reactnative.svg'
-import dockerIcon from '@/assets/icons/technologies/docker.svg'
+import { useTechnologyIcons } from '@/composables/use_technology_icons.js'
 
 const { t } = useI18n({ useScope: 'global' })
 
-const { isDark } = useTheme()
-const technologyIcons = computed(() => ({
-  PHP: phpIcon,
-  Symfony: isDark.value ? symfonyLightIcon : symfonyDarkIcon,
-  Doctrine: doctrineIcon,
-  MySQL: mysqlIcon,
-  Stripe: isDark.value ? stripeWhiteIcon : stripePurpleIcon,
-  'React Native': reactNativeIcon,
-  Docker: dockerIcon,
-}))
+const { technologyIcons } = useTechnologyIcons()
 
 defineProps({
   project: {

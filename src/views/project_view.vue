@@ -38,7 +38,7 @@ const nextProject = computed(() =>
         </p>
         <h1>{{ project.title }}</h1>
         <p class="project_description">{{ project.description }}</p>
-        <div class="project_actions">
+        <div v-if="project.demoUrl || project.sourceUrl" class="project_actions">
           <a
             v-if="project.demoUrl"
             class="project_button project_button_primary"
@@ -48,15 +48,6 @@ const nextProject = computed(() =>
           >
             {{ t('project.visit') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </a>
-          <button
-            v-else
-            class="project_button project_button_primary"
-            type="button"
-            :title="t('project.demo_pending')"
-            disabled
-          >
-            {{ t('project.visit') }} <ArrowUpRight :size="16" aria-hidden="true" />
-          </button>
           <a
             v-if="project.sourceUrl"
             class="project_button"
@@ -66,15 +57,6 @@ const nextProject = computed(() =>
           >
             {{ t('project.source') }} <ArrowUpRight :size="16" aria-hidden="true" />
           </a>
-          <button
-            v-else
-            class="project_button"
-            type="button"
-            :title="t('project.source_pending')"
-            disabled
-          >
-            {{ t('project.source') }} <ArrowUpRight :size="16" aria-hidden="true" />
-          </button>
         </div>
       </header>
 
@@ -118,9 +100,12 @@ const nextProject = computed(() =>
             02 / {{ t('project.highlights') }}
           </h2>
           <ul class="project_highlights">
-            <li v-for="highlight in project.highlights" :key="highlight">
+            <li v-for="highlight in project.highlights" :key="highlight.id">
               <ChevronRight :size="18" aria-hidden="true" />
-              <span>{{ highlight }}</span>
+              <span>
+                <strong v-if="highlight.label">{{ highlight.label }}</strong>
+                {{ highlight.description }}
+              </span>
             </li>
           </ul>
         </div>
@@ -131,13 +116,17 @@ const nextProject = computed(() =>
           <h2 id="project_stack_title" class="project_section_title">
             03 / {{ t('project.stack') }}
           </h2>
-          <ul class="project_technologies">
+          <ul class="project_technologies" :aria-label="t('project.technologies')">
             <li v-for="technology in project.technologies" :key="technology">{{ technology }}</li>
           </ul>
         </div>
       </section>
 
-      <section class="project_section" aria-labelledby="project_screenshots_title">
+      <section
+        v-if="project.screenshots?.length"
+        class="project_section"
+        aria-labelledby="project_screenshots_title"
+      >
         <div class="container project_section_content">
           <h2 id="project_screenshots_title" class="project_section_title">
             04 / {{ t('project.screenshots') }}
@@ -358,7 +347,7 @@ const nextProject = computed(() =>
     display: flex;
     justify-content: space-between;
     gap: 1.25rem;
-    padding-block: 2.5rem 5.625rem;
+    padding-block: 2.5rem 2.5rem;
   }
   &_link {
     min-width: 0;
